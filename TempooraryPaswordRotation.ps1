@@ -5,7 +5,7 @@ while ($AskUser -ne "N") {
     $UPN = Read-Host -Prompt "Enter the UPN of the user to get the information"
 
     $properties = @{}
-    # Assuming you have a method to convert a SecureString to plain text if necessary, otherwise, use it directly if supported
+    
     $properties.isUsableOnce = $false
     $Date = Get-Date
     $properties.startdateTime = $Date

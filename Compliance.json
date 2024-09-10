@@ -1,0 +1,25 @@
+{
+    "policy": {
+        "name": "Politique de conformité du périphérique",
+        "description": "Vérifier la conformité des périphériques",
+        "platform": "windows10",
+        "settings": {
+            "passwordRequired": true,
+            "passwordMinimumLength": 8,
+            "passwordRequireAlphanumeric": true,
+            "passwordRequireUppercase": true,
+            "passwordRequireLowercase": true,
+            "passwordRequireSymbols": true,
+            "deviceThreatLevel": "secured",
+            "deviceNotRooted": true,
+            "deviceRequireScreenLock": true,
+            "osMinimumVersion": "10.0.14393.0"
+        },
+        "actions": {
+            "markDeviceNonCompliant": {
+                "daysAfterNoncomplianceDetected": 1
+            },
+            "sendEmailToUser": true
+        }
+    }
+}

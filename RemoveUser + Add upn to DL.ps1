@@ -27,14 +27,15 @@ do {
 
     # Proceed to Create a Distribution List (DL)
     $DLName = Read-Host -Prompt "Enter the DL name"
+    $Description = Read-Host -Prompt "Enter the DL description"
     $emailDL = Read-Host -Prompt "Enter the DL email"
-    $Members = Read-Host -Prompt "Enter the members' UPN, if you have more than one, write them separated by commas"
-
-    New-DistributionGroup -Name $DLName -PrimarySmtpAddress $emailDL -Members $Members -ErrorAction SilentlyContinue
+    $Members = Read-Host -Prompt "Enter the members' UPN, if you have more than one, write them separated by commas like this 'user1','user2'"
+    $MemberstoAdd = @($Members)
+    New-DistributionGroup -Name $DLName -PrimarySmtpAddress $emailDL -Members $MemberstoAdd   -Description $Description -ErrorAction SilentlyContinue
     if ($?) {
         Write-Host "$DLName DL created"
         # Update DL with restrictions
-        Set-DistributionGroup -Identity $DLName -PrimarySmtpAddress $UserToRemove -MemberDepartRestriction Closed -MemberJoinRestriction Closed -RequireSenderAuthenticationEnabled $false
+        Set-DistributionGroup -Identity $DLName -PrimarySmtpAddress $UserToRemove -MemberDepartRestriction Closed -MemberJoinRestriction Closed -RequireSenderAuthenticationEnabled $false -Description "ML de redirection"
 
         Write-Host "DL restrictions set to Closed"
     }

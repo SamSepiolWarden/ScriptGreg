@@ -52,6 +52,11 @@ while ($continue) {
     $ModifyExtension = Read-Host -Prompt "Do you want to add or modify an extension attribute? (Y/N)"
     if ($ModifyExtension -eq "Y") {
         $ExtensionNum = Read-Host -Prompt "Enter the extension number (1-15) you wish to add or modify"
+        while ($ExtensionNum -lt 1 -or $ExtensionNum -gt 15) {
+            Write-Host "Extension number must be between 1 and 15" -ForegroundColor Yellow
+            $ExtensionNum = Read-Host -Prompt "Enter the extension number (1-15) you wish to add or modify"
+            
+        }
         $ExtensionValue = Read-Host -Prompt "Enter the new value for the extension attribute"
 
         # Update or add the extension attribute
