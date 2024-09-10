@@ -1,0 +1,1 @@
+﻿Disable-LocalUser -Name "socia"
