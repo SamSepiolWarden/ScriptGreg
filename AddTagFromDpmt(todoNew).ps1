@@ -7,7 +7,7 @@ do {
     $UPN = Read-Host -Prompt "Enter the UPN of the user to get the information"
 
     # Get user details in a single call
-    $UserDetails = Get-MgUser -Filter "UserPrincipalName eq '$UPN'"
+    $UserDetails = Get-MgBetaUser -Filter "UserPrincipalName eq '$UPN'"
     $UserID = ($UserDetails | Select-Object Id).Id
     $UserDepartment = ($UserDetails | Select-Object Department).Department
 
@@ -68,7 +68,7 @@ do {
             $TagToLookFor = "OnlySales"
             Write-Host "Department: Sales. Looking for tag: $TagToLookFor"
         }
-        "IT" {
+        "Operations-IT" {
             $TagToLookFor = "OnlyIT"
             Write-Host "Department: IT. Looking for tag: $TagToLookFor"
         }
