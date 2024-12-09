@@ -1,0 +1,10 @@
+
+$AskToExe = Read-host -Prompt "Do you want to update these events? (Y/N)"
+if ($AskToExe -eq "Y") {
+    
+foreach ($event in $events) {
+    $Asking = Read-host -Prompt "Do you want to update this event: $($event.Subject) ? (Y/N)"
+    Update-MgGroupCalendarEvent -GroupId $groupID -CalendarId $groupCalendarID -EventId $event.Id }
+}
+
+Disconnect-MgGraph
