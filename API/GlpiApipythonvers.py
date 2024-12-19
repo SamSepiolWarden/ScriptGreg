@@ -168,9 +168,9 @@ def get_intune_devices(graph_client):
 
 def main():
     # Configuration
-    glpi_url = "https://sociabble.with22.glpi-network.cloud/apirest.php"
-    app_token = "4qv8BFV6jR6FJ8nR7FqcNDnNypMNbcqj94u54erJ"
-    user_token = "EdBBbrmKNWZU0ieIUQCax4iFoHbjjTNKc4MGHzdm"
+    glpi_url = 
+    app_token = 
+    user_token =
 
 
     try:
