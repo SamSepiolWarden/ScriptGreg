@@ -1,7 +1,7 @@
 # Configuration
-$GlpiUrl = "https://sociabble.with22.glpi-network.cloud/apirest.php"
-$AppToken = "4qv8BFV6jR6FJ8nR7FqcNDnNypMNbcqj94u54erJ"  # Add your App-Token from GLPI API settings
-$UserToken = "EdBBbrmKNWZU0ieIUQCax4iFoHbjjTNKc4MGHzdm"  # Add your Remote access key from User Preferences
+$GlpiUrl = 
+$AppToken = # Add your App-Token from GLPI API settings
+$UserToken = # Add your Remote access key from User Preferences
 $Global:SessionToken = $null
 
 # Connect to Microsoft Graph if not already connected
