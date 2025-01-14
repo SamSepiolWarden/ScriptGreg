@@ -1,6 +1,6 @@
 ﻿Connect-ExchangeOnline
 $UserCalendar = Read-Host -Prompt "Enter the mail adress to who's share is calendar ex: jane.doe@sociabble.com:\Calendar ou :\Calendrier"
-$UserAdd = Read-Host -Prompt "Enter the mail adress to add permission ex: axel.gaudiot@sociabble.com"
+$UserAdd = Read-Host -Prompt "Enter the mail adress to add permission ex: jane.doe@onmicrosoft.com"
 
 $SearchUserAdd = Get-EXOMailboxFolderPermission -identity $UserAdd
 if($null -ne $SearchUserAdd){

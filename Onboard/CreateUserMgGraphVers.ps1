@@ -139,45 +139,6 @@ else {
   
 
     
-# add the user to a group
-if ($Department -notcontains "Product-Rnd") {
-
-
-$GroupId = Get-MgGroup -Filter "DisplayName eq 'Enrollment - Enrollment as User (Other Department)'" | Select-Object -ExpandProperty Id
- New-MgGroupMember -GroupId $GroupId -DirectoryObjectID $UserFilter.Id
- if($?) {
-     Write-Host "User $email added to group SOCIABBLE - Enrollment - Enrollment as User (Other Department)" -ForegroundColor Green
- }
- else {
-     Write-Host "User $email not added to group SOCIABBLE - Apps&Enrollment - Enrollment as User (Other Department)" -ForegroundColor Red
- }
- $GroupId2 = Get-MgGroup -Filter "DisplayName eq 'Apps - Company Portal - (Other Department)'" | Select-Object -ExpandProperty Id
- New-MgGroupMember -GroupId $GroupId2 -DirectoryObjectID $UserFilter.Id
-    if($?) {
-        Write-Host "User $email added to group SOCIABBLE - Apps - Company Portal - (Other Department)" -ForegroundColor Green
-    }
-    else {
-        Write-Host "User $email not added to group SOCIABBLE - Apps - Company Portal - (Other Department)" -ForegroundColor Red
-    }
-}
-if ($Department -contains "Product-Rnd") {
-    $GroupId1 = Get-MgGroup -Filter "DisplayName eq 'Enrollment - Enrollment as User (R&D)'" | Select-Object -ExpandProperty Id
- New-MgGroupMember -GroupId $GroupId1 -DirectoryObjectID $UserFilter.Id
-    if($?) {
-        Write-Host "User $email added to group SOCIABBLE - Enrollment - Enrollment as User (R&D)" -ForegroundColor Green
-    }
-    else {
-        Write-Host "User $email not added to group SOCIABBLE - Apps&Enrollment - Enrollment as User (R&D)" -ForegroundColor Red
-    }
-    $GroupId3 = Get-MgGroup -Filter "DisplayName eq 'Apps - Company Portal - RnD'" | Select-Object -ExpandProperty Id
- New-MgGroupMember -GroupId $GroupId3 -DirectoryObjectID $UserFilter.Id
-    if($?) {
-        Write-Host "User $email added to group SOCIABBLE - Apps - Company Portal - RnD" -ForegroundColor Green
-    }
-    else {
-        Write-Host "User $email not added to group SOCIABBLE - Apps - Company Portal - RnD" -ForegroundColor Red
-    }
-}
 # Ask for modify extension attribute of the user
 $AskAttribute = Read-Host -Prompt "Do you want to modify the extension attribute of the user? (Y/N)"
 if ($AskAttribute -eq 'Y'){

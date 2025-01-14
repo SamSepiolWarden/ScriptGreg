@@ -36,8 +36,8 @@ Connect-ExchangeOnline
 
 $continue = $true
 while ($continue) {
-    $UserMailbox = Read-Host -Prompt "Entrez l'adresse e-mail du nouvel arrivant ex : Jane.Doe@sociabble.com:\Calendar ou :\Calendrier"
-    $HRMail = Read-Host -Prompt "Entrez l'adresse e-mail HR ex: Jane.Doe@sociabble.com"
+    $UserMailbox = Read-Host -Prompt "Entrez l'adresse e-mail du nouvel arrivant ex : Jane.Doe@onmicrosoft.com:\Calendar ou :\Calendrier"
+    $HRMail = Read-Host -Prompt "Entrez l'adresse e-mail HR ex: Jane.Doe@onmicrosoft.com"
 
     if (-not (Test-Mailbox $UserMailbox) -or -not (Test-Mailbox $HRMail)) {
         Write-Host "Invalid email address format." -ForegroundColor Red
