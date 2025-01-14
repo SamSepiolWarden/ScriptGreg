@@ -146,7 +146,7 @@ switch($result)
 }
 #############################################
 
-$DLs = Import-Csv -Path "C:\Users\GregorySemedo\Desktop\Script\DL\DL-$Department.csv"
+$DLs = Import-Csv -Path ""
 ForEach ($DL in $DLs) {
      
             Remove-DistributionGroupMember -Identity $DL."DL" -Member $User -ErrorAction Continue 
@@ -208,17 +208,17 @@ if ($groups.Count -eq 0) {
     }
 
 
-    Connect-SPOService -Url https://sociabble-admin.sharepoint.com
+    Connect-SPOService -Url 
 
     $GroupSPO = "Sociabble - Membres"
-    $SearchGroup = Get-SPOSiteGroup -Site https://sociabble.sharepoint.com/sites/sociabble -Group $GroupSPO
+    $SearchGroup = Get-SPOSiteGroup -Site  -Group $GroupSPO
     if ($SearchGroup){
         Write-Host "the group $GroupSPO exist" -ForegroundColor Green
     }
     #Ask to remove the user
     $AskRemoveUser = Read-Host -Prompt "Do you want to remove another user? (Y/N)"
     if ($AskRemoveUser -eq 'Y'){
-        Remove-SPOUSer -Site "https://sociabble.sharepoint.com/sites/sociabble" -LoginName $User -Group $GroupSPO
+        Remove-SPOUSer -Site "" -LoginName $User -Group $GroupSPO
         if($?)
         {
             Write-Host "User $User removed from the group $GroupSPO" -ForegroundColor Green
