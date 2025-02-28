@@ -1,8 +1,8 @@
 npx wrangler login
 # Directory containing files to upload
-$sourceDir = "D:\"
+$sourceDir = "C:\Users\grego\Desktop\Perso\ScriptGreg"
 # Your bucket name
-$bucketName = "music-backup"
+$bucketName = "backup-drive"
 
 # Get all files in the source directory
 Get-ChildItem -Path $sourceDir -File -Recurse | ForEach-Object {
