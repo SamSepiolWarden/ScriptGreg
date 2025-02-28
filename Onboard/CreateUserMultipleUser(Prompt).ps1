@@ -1,6 +1,5 @@
 ﻿# Connect to services
 Connect-MgGraph
-Connect-MsolService
 
 # Function to create a new user
 function New-User {
@@ -15,18 +14,19 @@ function New-User {
     $email = "$username@sociabble.com"
 
     # Check if the user already exists
-    $existingUser = Get-MsolUser -UserPrincipalName $email -ErrorAction SilentlyContinue
+    $existingUser = Get-MgUser -Filter "userPrincipalName eq '$email'" -ErrorAction SilentlyContinue
     if ($existingUser) {
         Write-Host "User $email already exists. Skipping creation."
         return
     }
 
     # Create new user
-    New-MsolUser -DisplayName "$displayName" -FirstName "$fname" -LastName "$lname" -UserPrincipalName $email -UsageLocation FR -Password $password -BlockCredential $true
+    New-MgUser -DisplayName "$displayName" -FirstName "$fname" -LastName "$lname" -UserPrincipalName $email -UsageLocation FR -Password $password -BlockCredential $true
 if ($?) {
     Write-Host "User $email created successfully" -ForegroundColor Green
 }
-$UserCreated = Get-MsolUser -UserPrincipalName $email
+$UserCreated = Get-MgUser -UserId $existingUser.ObjectId
+    # Update the user with additional information
 
 update-mguser -UserId $UserCreated.ObjectId -OtherMails $email
     # Additional operations like assigning license and adding to group can be included here
