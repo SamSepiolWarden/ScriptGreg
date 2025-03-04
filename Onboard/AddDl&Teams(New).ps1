@@ -33,6 +33,8 @@ Try {
     return
 }
 
+$UserID = Get-MgUser -Filter "mail eq '$User'"
+
 # Select Location
 $Locations = @("&Paris", "&Lyon", "&Mumbai")
 $Result = $host.UI.PromptForChoice('Task Menu', 'Select a Location', $Locations, 0)
@@ -124,7 +126,7 @@ if ($Department -eq "Corp" -or $Department -eq "Accounting") {
 # Add to Global ChitChat
 If($Location -eq 'Paris' -or 'Lyon' -or 'Mumbai' ){
     $AllChat = Get-MgChat -Filter "chatType eq 'group'"
-    Add-MgUserChatMember -ChatId "19:7e11acf4a6624f13a9d4bf77f4b4e5c1@thread.v2" -UserId $User
+    Add-MgUserChatMember -ChatId "19:7e11acf4a6624f13a9d4bf77f4b4e5c1@thread.v2" -UserId $UserID.Id
     if ($?) {
         Write-Host "$User added to $AllChat.Topic" -ForegroundColor Green
     }
@@ -134,7 +136,7 @@ If($Location -eq 'Paris' -or 'Lyon' -or 'Mumbai' ){
 }
 # Add to Lunch time
 if ($Location -eq "Paris") {
-    Add-MgUserChatMember -ChatId "19:cf717a7fbc9e42c58238dc2ac20428bb@thread.v2" -UserId $User
+    Add-MgUserChatMember -ChatId "19:cf717a7fbc9e42c58238dc2ac20428bb@thread.v2" -UserId $UserID.Id
     Write-Host "$User added to Lunch Time Chat" -ForegroundColor Green
     else {
         Write-Host "Error to add $User to LunchTime" -ForegroundColor DarkCyan
